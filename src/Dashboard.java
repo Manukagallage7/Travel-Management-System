@@ -1,10 +1,15 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 
-public class Dashboard extends JFrame{
+public class Dashboard extends JFrame implements ActionListener{
+
+    String username;
+    JButton addPersonalDetails, updatePersonalDetails, viewPersonalDetails, deletePersonalDetails;
     
-    Dashboard() {
+    Dashboard(String username) {
+        this.username = username;
         setBounds(0, 0, 1600, 1000);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(null);
@@ -34,15 +39,16 @@ public class Dashboard extends JFrame{
         p2.setBounds(0, 65, 300, 900);
         add(p2);
 
-        JButton addPersonalDetails = new JButton("Add Personal Details");
+        addPersonalDetails = new JButton("Add Personal Details");
         addPersonalDetails.setBounds(0, 0, 300, 50);
         addPersonalDetails.setBackground(new Color(0, 0, 50));
         addPersonalDetails.setForeground(Color.WHITE);
         addPersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
         addPersonalDetails.setMargin(new Insets(0, 0, 0, 60));
+        addPersonalDetails.addActionListener(this);
         p2.add(addPersonalDetails);
 
-        JButton updatePersonalDetails = new JButton("Update Personal Details");
+        updatePersonalDetails = new JButton("Update Personal Details");
         updatePersonalDetails.setBounds(0, 50, 300, 50);
         updatePersonalDetails.setBackground(new Color(0, 0, 50));
         updatePersonalDetails.setForeground(Color.WHITE);
@@ -50,7 +56,7 @@ public class Dashboard extends JFrame{
         updatePersonalDetails.setMargin(new Insets(0, 0, 0, 30));
         p2.add(updatePersonalDetails);
 
-        JButton viewPersonalDetails = new JButton("View Personal Details");
+        viewPersonalDetails = new JButton("View Personal Details");
         viewPersonalDetails.setBounds(0, 100, 300, 50);
         viewPersonalDetails.setBackground(new Color(0, 0, 50));
         viewPersonalDetails.setForeground(Color.WHITE);
@@ -58,7 +64,7 @@ public class Dashboard extends JFrame{
         viewPersonalDetails.setMargin(new Insets(0, 0, 0, 45));
         p2.add(viewPersonalDetails);
 
-        JButton deletePersonalDetails = new JButton("Delete Personal Details");
+        deletePersonalDetails = new JButton("Delete Personal Details");
         deletePersonalDetails.setBounds(0, 150, 300, 50);
         deletePersonalDetails.setBackground(new Color(0, 0, 50));
         deletePersonalDetails.setForeground(Color.WHITE);
@@ -172,7 +178,13 @@ public class Dashboard extends JFrame{
 
     }
 
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == addPersonalDetails) {
+            new AddCustomer(username);
+        }
+    }
+
     public static void main(String [] args){
-        new Dashboard();
+        new Dashboard("");
     }
 }

@@ -15,7 +15,8 @@ public class Loading extends JFrame implements Runnable {
                 if(value < max){ 
                     bar.setValue(bar.getValue() + 1);
                 } else {
-                    setVisible(false);
+                    setVisible(false); 
+                    new Dashboard(username);
                 }
                 Thread.sleep(50);
             }
