@@ -6,5 +6,6 @@
         "c:\\Program Files (x86)\\MySQL\\Connector J 8.0\\mysql-connector-j-8.0.33.jar",
         "c:\\Program Files (x86)\\MySQL\\jcalendar-1.4.jar",
         "c:\\Program Files (x86)\\MySQL\\rs2xml.jar"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

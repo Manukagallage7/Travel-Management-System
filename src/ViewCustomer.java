@@ -1,12 +1,15 @@
 import java.awt.*;
+import java.awt.event.*;
+import java.sql.ResultSet;
 import javax.swing.*;
 
 
-public class ViewCustomer extends JFrame{
+public class ViewCustomer extends JFrame implements ActionListener {
 
     JButton back;
+    String username;
 
-    ViewCustomer(){
+    ViewCustomer(String username){
         setBounds(450, 180, 900, 620);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -16,7 +19,7 @@ public class ViewCustomer extends JFrame{
         add(lblusername);
 
         JLabel labelusername = new JLabel("");
-        labelusername.setBounds(220, 50, 150, 25);
+        labelusername.setBounds(220, 110, 150, 25);
         add(labelusername);
 
         JLabel lblid = new JLabel("id");
@@ -87,23 +90,45 @@ public class ViewCustomer extends JFrame{
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         back.setBounds(350, 350, 100, 25);
+        back.addActionListener(this);
         add(back);
 
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/viewall.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(600, 200, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(150, 400, 600, 200);
+        add(image);
 
-
-
-
-
-        
+        try {
+            Conn conn = new Conn();
+            String query = "select * from customer where username = '" + username + "'"; 
+            ResultSet rs = conn.s.executeQuery(query);
+            while(rs.next()) {
+                labelusername.setText(rs.getString("username"));
+                labelid.setText(rs.getString("id"));
+                labelnumber.setText(rs.getString("number"));
+                labelname.setText(rs.getString("name"));
+                labelgender.setText(rs.getString("gender"));
+                labelcountry.setText(rs.getString("country"));
+                labeladdress.setText(rs.getString("address"));
+                labelphone.setText(rs.getString("phone"));
+                labelemail.setText(rs.getString("email"));
+            }
+        } catch (Exception e) {
+        }
 
         setVisible(true);
         
     }
 
+    public void actionPerformed(ActionEvent ae) {
+        setVisible(false);
+    }
     
 
     public static void main(String[] args){
-        new ViewCustomer();
+        new ViewCustomer("Senitha7");
     }
     
 }

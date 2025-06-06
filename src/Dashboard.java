@@ -62,6 +62,7 @@ public class Dashboard extends JFrame implements ActionListener{
         viewPersonalDetails.setForeground(Color.WHITE);
         viewPersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
         viewPersonalDetails.setMargin(new Insets(0, 0, 0, 45));
+        viewPersonalDetails.addActionListener(this);
         p2.add(viewPersonalDetails);
 
         deletePersonalDetails = new JButton("Delete Personal Details");
@@ -181,6 +182,8 @@ public class Dashboard extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == addPersonalDetails) {
             new AddCustomer(username);
+        } else if(ae.getSource() == viewPersonalDetails) {
+            new ViewCustomer(username);
         }
     }
 
