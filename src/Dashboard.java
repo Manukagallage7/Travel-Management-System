@@ -6,7 +6,8 @@ import javax.swing.*;
 public class Dashboard extends JFrame implements ActionListener{
 
     String username;
-    JButton addPersonalDetails, updatePersonalDetails, viewPersonalDetails, deletePersonalDetails;
+    JButton addPersonalDetails, updatePersonalDetails, viewPersonalDetails, deletePersonalDetails,
+            checkpackages;
     
     Dashboard(String username) {
         this.username = username;
@@ -54,6 +55,7 @@ public class Dashboard extends JFrame implements ActionListener{
         updatePersonalDetails.setForeground(Color.WHITE);
         updatePersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
         updatePersonalDetails.setMargin(new Insets(0, 0, 0, 30));
+        updatePersonalDetails.addActionListener(this);
         p2.add(updatePersonalDetails);
 
         viewPersonalDetails = new JButton("View Personal Details");
@@ -73,12 +75,13 @@ public class Dashboard extends JFrame implements ActionListener{
         deletePersonalDetails.setMargin(new Insets(0, 0, 0, 40));
         p2.add(deletePersonalDetails);
 
-        JButton checkpackages = new JButton("Check Package");
+        checkpackages = new JButton("Check Package");
         checkpackages.setBounds(0, 200, 300, 50);
         checkpackages.setBackground(new Color(0, 0, 50));
         checkpackages.setForeground(Color.WHITE);
         checkpackages.setFont(new Font("Tahoma", Font.PLAIN, 20));
         checkpackages.setMargin(new Insets(0, 0, 0, 110));
+        checkpackages.addActionListener(this);
         p2.add(checkpackages);
 
         JButton bookpackages = new JButton("Book Package");
@@ -184,6 +187,12 @@ public class Dashboard extends JFrame implements ActionListener{
             new AddCustomer(username);
         } else if(ae.getSource() == viewPersonalDetails) {
             new ViewCustomer(username);
+        } else if(ae.getSource() == updatePersonalDetails) {
+            new UpdateCustomer(username);
+        } else if(ae.getSource() == deletePersonalDetails) {
+           // new DeleteCustomer(username);
+        } else if(ae.getSource() == checkpackages) {
+            new CheckPackage();
         }
     }
 
