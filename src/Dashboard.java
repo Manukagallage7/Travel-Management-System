@@ -7,7 +7,7 @@ public class Dashboard extends JFrame implements ActionListener{
 
     String username;
     JButton addPersonalDetails, updatePersonalDetails, viewPersonalDetails, deletePersonalDetails,
-            checkpackages, bookpackages;
+            checkpackages, bookpackages, viewpackages;
     
     Dashboard(String username) {
         this.username = username;
@@ -90,19 +90,16 @@ public class Dashboard extends JFrame implements ActionListener{
         bookpackages.setForeground(Color.WHITE);
         bookpackages.setFont(new Font("Tahoma", Font.PLAIN, 20));
         bookpackages.setMargin(new Insets(0, 0, 0, 120));
-        bookpackages.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                new BookPackage(username);
-            }
-        });
+        bookpackages.addActionListener(this);
         p2.add(bookpackages);
         
-        JButton viewpackages = new JButton("View Package");
+        viewpackages = new JButton("View Package");
         viewpackages.setBounds(0, 300, 300, 50);
         viewpackages.setBackground(new Color(0, 0, 50));
         viewpackages.setForeground(Color.WHITE);
         viewpackages.setFont(new Font("Tahoma", Font.PLAIN, 20));
         viewpackages.setMargin(new Insets(0, 0, 0, 120));
+        viewpackages.addActionListener(this);
         p2.add(viewpackages);
 
         JButton viewhotels = new JButton("View Hotels");
@@ -200,6 +197,8 @@ public class Dashboard extends JFrame implements ActionListener{
             new CheckPackage();
         } else if(ae.getSource() == bookpackages){
             new BookPackage(username);
+        } else if(ae.getSource() == viewpackages) {
+            new ViewPackage(username);
         }
     }
 

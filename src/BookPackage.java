@@ -164,6 +164,7 @@ public class BookPackage extends JFrame implements ActionListener {
                 c.s.executeUpdate("INSERT INTO bookpackage VALUES('" + labelusername.getText() + "', '" + cpackage.getSelectedItem() + "', '" + tfpersons.getText() + "', '" + labelid.getText() + "', '" + labelnumber.getText() + "', '" + labelphone.getText() + "', '" + labeltotal.getText() + "')");
                 JOptionPane.showMessageDialog(null, "Package Booked Successfully");
             } catch (Exception e) {
+                e.printStackTrace();
             }
         } else {
             setVisible(false);
@@ -172,6 +173,6 @@ public class BookPackage extends JFrame implements ActionListener {
     
 
     public static void main(String[] args){
-        new BookPackage("");
+        new BookPackage("Senitha7");
     }
 }
