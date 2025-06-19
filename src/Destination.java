@@ -2,22 +2,16 @@ import java.awt.*;
 import javax.swing.*;
 
 
-public class ViewHotel extends JFrame implements Runnable{
+public class Destination extends JFrame implements Runnable{
 
     Thread t1;
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
     JLabel[] label = new JLabel[]{ l1, l2, l3, l4, l5, l6, l7, l8, l9, l10 };
-    JLabel caption;
 
     public void run(){
-        String[] hotelNames = {
-            "Hotel 1", "Hotel 2", "Hotel 3", "Hotel 4", "Hotel 5",
-            "Hotel 6", "Hotel 7", "Hotel 8", "Hotel 9", "Hotel 10"
-        };
         try {
-            for(int i=0; i<=9; i++){
+            for(int i=0; i<9; i++){
                 label[i].setVisible(true);
-                caption.setText(hotelNames[i]);
                 Thread.sleep(2000);
                 label[i].setVisible(false);
             }
@@ -26,14 +20,8 @@ public class ViewHotel extends JFrame implements Runnable{
         }
     }
 
-    ViewHotel(){
+    Destination(){
         setBounds(450, 200, 900, 600);
-
-        caption = new JLabel();
-        caption.setFont(new Font("Tahoma", Font.PLAIN, 40));
-        caption.setForeground(Color.WHITE);
-        caption.setBounds(50, 500, 1000, 70);
-        add(caption);
 
         ImageIcon i1 = null, i2 = null, i3 = null, i4 = null, i5 = null, i6 = null, i7 = null, i8 = null, i9 = null, i10  = null;
         ImageIcon[] image = new ImageIcon[]{ i1, i2, i3, i4, i5, i6, i7, i8, i9, i10 };
@@ -62,7 +50,7 @@ public class ViewHotel extends JFrame implements Runnable{
     }
 
     public static void main(String[] args) {
-        new ViewHotel();
+        new Destination();
     }
     
 }
