@@ -18,7 +18,7 @@ public class BookPackage extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.WHITE);
 
         JLabel text = new JLabel("Book Package");
-        text.setBounds(100, 10, 200, 30);
+        text.setBounds(150, 15, 200, 35);
         text.setFont(new Font("Tahoma", Font.BOLD, 20));
         add(text);
 
