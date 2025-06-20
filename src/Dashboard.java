@@ -7,7 +7,7 @@ public class Dashboard extends JFrame implements ActionListener{
 
     String username;
     JButton addPersonalDetails, updatePersonalDetails, viewPersonalDetails, deletePersonalDetails,
-            checkpackages, bookpackages, viewpackages, viewhotels, destinations;
+            checkpackages, bookpackages, viewpackages, viewhotels, destinations, bookhotels;
     
     Dashboard(String username) {
         this.username = username;
@@ -111,12 +111,13 @@ public class Dashboard extends JFrame implements ActionListener{
         viewhotels.addActionListener(this);
         p2.add(viewhotels);
 
-        JButton bookhotels = new JButton("Book Hotels");
+        bookhotels = new JButton("Book Hotels");
         bookhotels.setBounds(0, 400, 300, 50);
         bookhotels.setBackground(new Color(0, 0, 50));
         bookhotels.setForeground(Color.WHITE);
         bookhotels.setFont(new Font("Tahoma", Font.PLAIN, 20));
         bookhotels.setMargin(new Insets(0, 0, 0, 140));
+        bookhotels.addActionListener(this);
         p2.add(bookhotels);
 
         JButton viewbookedhotels = new JButton("View Booked Hotels");
@@ -205,6 +206,8 @@ public class Dashboard extends JFrame implements ActionListener{
             new ViewHotel();
         } else if(ae.getSource() == destinations) {
             new Destination();
+        } else if(ae.getSource() == bookhotels) {
+            new BookHotel(username);
         }
     }
 
